@@ -1,0 +1,10 @@
+{
+    "lastname": "Thaher",
+    "totalprice": 500,
+    "depositpaid": false,
+    "bookingdates": {
+        "checkin": "2020-12-08",
+        "checkout": "2021-08-16"
+    },
+    "additionalneeds": "Breakfast"
+}

@@ -1,0 +1,11 @@
+{
+    "firstname": "Noha",
+    "lastname": "Thaher",
+    "totalprice": 777,
+    "depositpaid": false,
+    "bookingdates": {
+        "checkin": "2017-01-09",
+        "checkout": "2018-02-19"
+    },
+    "additionalneeds":"Breakfast"
+}

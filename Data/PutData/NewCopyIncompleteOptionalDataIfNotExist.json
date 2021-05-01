@@ -1,0 +1,11 @@
+{
+    "firstname": "noha",
+    "lastname": "Thaher",
+    "totalprice": 123,
+    "depositpaid": true,
+    "bookingdates": {
+        "checkin": "2020-05-24",
+        "checkout": "2021-01-05"
+    },
+    "additionalneeds": "Breakfast"
+}

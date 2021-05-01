@@ -1,0 +1,10 @@
+{
+    "firstname": "Eric",
+    "lastname": "Jones",
+    "totalprice": 366,
+    "depositpaid": false,
+    "bookingdates": {
+        "checkout": "2019-04-18"
+    },
+    "age":"20"
+}
