@@ -2,8 +2,6 @@ package TestClasses;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 
 import org.json.simple.JSONObject;
@@ -44,15 +42,16 @@ public class TestDeleteRestAPI {
 
 			HttpURLConnection connection = RestClientHandler.connectServer(URLs.API , HTTPMethod.DELETE,HTTPRequestsContentTypes.JSON);
 			connection.addRequestProperty("Cookie", CreateToken());
-			// 2. validate if the connection is successfully openned
+			// 2. Send DELETE request
 			RestClientHandler.sendDelete(connection,"", HTTPRequestsContentTypes.JSON);
+			// 3. validate if the connection is successfully openned
 			System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
 			assertTrue("unable to connect to webservice DELETE", connection.getResponseCode() == 201);
-			// 3. reading response using input stream
+			// 4. reading response using input stream
 			String response = RestClientHandler.readResponse(connection);
 			System.out.println(response);
 			assertTrue("Data is not deletd", response.equals("Created"));
-			// 4. validation by get the id another time 
+			// 5. validation by get the id another time 
 			HttpURLConnection connectionGET = RestClientHandler.connectServer(URLs.API , HTTPMethod.GET,HTTPRequestsContentTypes.JSON);
 			assertTrue("unable to connect to webservice GET", connectionGET.getResponseCode() == 404);
 
@@ -66,15 +65,16 @@ public class TestDeleteRestAPI {
 			System.out.println(Url);
 			HttpURLConnection connection = RestClientHandler.connectServer(Url, HTTPMethod.DELETE,HTTPRequestsContentTypes.JSON);
 			connection.addRequestProperty("Cookie", CreateToken());
-			// 2. validate if the connection is successfully openned
+			// 2. Send DELETE request
 			RestClientHandler.sendDelete(connection,"", HTTPRequestsContentTypes.JSON);
+			// 3. validate if the connection is successfully openned
 			System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
 			assertTrue("unable to connect to webservice DELETE", connection.getResponseCode() == 201);
-			// 3. reading response using input stream
+			// 4. reading response using input stream
 			String response = RestClientHandler.readResponse(connection);
 			System.out.println(response);
 			assertTrue("Data is not deletd", response.equals("Created"));
-			// 4. validation by get the id another time 
+			// 5. validation by get the id another time 
 			HttpURLConnection connectionGET = RestClientHandler.connectServer(Url, HTTPMethod.GET,HTTPRequestsContentTypes.JSON);
 			assertTrue("unable to connect to webservice GET", connectionGET.getResponseCode() == 404);
 
@@ -88,8 +88,9 @@ public class TestDeleteRestAPI {
 			System.out.println(Url);
 			HttpURLConnection connection = RestClientHandler.connectServer(Url, HTTPMethod.DELETE,HTTPRequestsContentTypes.JSON);
 			connection.addRequestProperty("Cookie", CreateToken());
-			// 2. validate if the connection is successfully openned
+			// 2.  Send DELETE request
 			RestClientHandler.sendDelete(connection,"", HTTPRequestsContentTypes.JSON);
+			// 3. validate if the connection is successfully openned
 			System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
 			assertTrue("unable to connect to webservice DELETE", connection.getResponseCode() == 405);
 

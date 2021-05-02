@@ -5,7 +5,6 @@ import Utils.JSONUtils;
 import enums.HTTPMethod;
 import enums.HTTPRequestsContentTypes;
 
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 
 import static org.junit.Assert.assertEquals;
@@ -103,8 +102,8 @@ public class HandleRequestReponse {
         HttpURLConnection con=RestClientHandler.connectServer(Url, HTTPMethod.PUT,HTTPRequestsContentTypes.JSON);
         readJSONObjectAndSend(filePath,con);
         String response=RestClientHandler.readResponse(con);
-        JSONObject resultData = (JSONObject) JSONUtils.convertStringToJSON(response);
-        String expectedResult= (String) resultData.get("status");
+//        JSONObject resultData = (JSONObject) JSONUtils.convertStringToJSON(response);
+//        String expectedResult= (String) resultData.get("status");
 
         return response;
     }

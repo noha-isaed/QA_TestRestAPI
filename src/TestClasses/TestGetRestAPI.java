@@ -1,7 +1,6 @@
 package TestClasses;
 
 import static org.junit.Assert.*;
-import java.io.IOException;
 import java.net.HttpURLConnection;
 import Links.URLs;
 import org.junit.Test;
@@ -26,13 +25,15 @@ public class TestGetRestAPI {
 
 	//check get rest api by get all data 
     @Test
-	public void TestGetAllData() throws IOException {
+	public void TestGetAllData() throws Exception {
 		// 1. connect to server and open connection (get HttpURLConnection object)
 		HttpURLConnection connection = RestClientHandler.connectServer(URLs.API , HTTPMethod.GET,HTTPRequestsContentTypes.JSON);
-		// 2. validate if the connection is successfully openned
+		// 2. Send GET request
+		RestClientHandler.sendGet(connection,"", HTTPRequestsContentTypes.JSON);
+		// 3. validate if the connection is successfully openned
 		System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
 		assertTrue("unable to connect to webservice", connection.getResponseCode() == 200);
-		// 3. reading response using input stream
+		// 4. reading response using input stream
 		String response = RestClientHandler.readResponse(connection);
 		System.out.println(response);
 		assertTrue("Data is empty", !response.equals(""));
@@ -41,7 +42,7 @@ public class TestGetRestAPI {
 	
 	//check get rest api by get only one id exist in the data 
 	@Test
-	public void TestGetExistIDBooking() throws IOException {
+	public void TestGetExistIDBooking() throws Exception {
 		// 1. connect to server and open connection (get HttpURLConnection object)
 		String Url = URLs.API + "2";
 		System.out.println(Url);
@@ -53,10 +54,12 @@ public class TestGetRestAPI {
 		connection.addRequestProperty("Accept", "*/*");
 		connection.addRequestProperty("Accept-Encoding", "gzip, deflate, br");
 		connection.addRequestProperty("Connection", "keep-alive");
-		// 2. validate if the connection is successfully openned
+		// 2. Send GET request
+		RestClientHandler.sendGet(connection,"", HTTPRequestsContentTypes.JSON);
+		// 3. validate if the connection is successfully openned
 		System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
 		assertTrue("unable to connect to webservice", connection.getResponseCode() == 200);
-		// 3. reading response using input stream
+		// 4. reading response using input stream
 		String response = RestClientHandler.readResponse(connection);
 		System.out.println(response);
 		assertTrue("Data is empty", !response.equals(""));
@@ -65,14 +68,16 @@ public class TestGetRestAPI {
 	
 	//check get rest api by get only one id not exist in the data 
     @Test(expected= FileNotFoundException.class)
-	public void TestGetNotExistIDBooking() throws IOException  {
+	public void TestGetNotExistIDBooking() throws Exception  {
 		// 1. connect to server and open connection (get HttpURLConnection object)
 		String Url = URLs.API + "200" ;
 		HttpURLConnection connection = RestClientHandler.connectServer(Url, HTTPMethod.GET,HTTPRequestsContentTypes.JSON);
-		// 2. validate if the connection is successfully openned
+		// 2. Send GET request
+		RestClientHandler.sendGet(connection,"", HTTPRequestsContentTypes.JSON);
+		// 3. validate if the connection is successfully openned
 		System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
 		assertTrue("able to connect to webservice", connection.getResponseCode() == 404);
-		// 3. reading response using input stream
+		// 4. reading response using input stream
 		String response = RestClientHandler.readResponse(connection);
 		System.out.println(response);
 		assertTrue("Data is not empty and you request id not exist", response.equals("Not Found"));
