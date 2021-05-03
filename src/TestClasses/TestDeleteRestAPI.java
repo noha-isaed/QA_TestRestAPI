@@ -36,7 +36,7 @@ public class TestDeleteRestAPI {
 	
 		
 		//check delte id exist in the data 
-		//@Test
+		@Test
 		public void TestDeleteExistIDBooking() throws Exception {
 			// 1. connect to server and open connection (get HttpURLConnection object)
 			String Url = URLs.API + "17";
