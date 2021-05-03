@@ -34,28 +34,6 @@ public class TestDeleteRestAPI {
 		
 	}
 	
-
-		//check delet all Data  
-	    //@Test
-		public void TestDeleteAllData() throws Exception {
-			// 1. connect to server and open connection (get HttpURLConnection object)
-
-			HttpURLConnection connection = RestClientHandler.connectServer(URLs.API , HTTPMethod.DELETE,HTTPRequestsContentTypes.JSON);
-			connection.addRequestProperty("Cookie", CreateToken());
-			// 2. Send DELETE request
-			RestClientHandler.sendDelete(connection,"", HTTPRequestsContentTypes.JSON);
-			// 3. validate if the connection is successfully openned
-			System.out.println("connection.getResponseCode() : " + connection.getResponseCode());
-			assertTrue("unable to connect to webservice DELETE", connection.getResponseCode() == 201);
-			// 4. reading response using input stream
-			String response = RestClientHandler.readResponse(connection);
-			System.out.println(response);
-			assertTrue("Data is not deletd", response.equals("Created"));
-			// 5. validation by get the id another time 
-			HttpURLConnection connectionGET = RestClientHandler.connectServer(URLs.API , HTTPMethod.GET,HTTPRequestsContentTypes.JSON);
-			assertTrue("unable to connect to webservice GET", connectionGET.getResponseCode() == 404);
-
-		}
 		
 		//check delte id exist in the data 
 		//@Test
